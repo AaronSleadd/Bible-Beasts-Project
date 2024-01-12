@@ -1,5 +1,5 @@
 # Start from the official Node.js LTS base image
-FROM node:18
+FROM node:alpine
 
 # Add the time to the build
 RUN date -u +"%Y-%m-%dT%H:%M:%SZ" > /build-time.txt
@@ -7,11 +7,14 @@ RUN date -u +"%Y-%m-%dT%H:%M:%SZ" > /build-time.txt
 # Set the working directory to /app
 WORKDIR /app
 
-# Copy the project files to the working directory
-COPY . .
+# Copy the just the package files to the working directory
+COPY package-lock.json package.json ./
 
 # Install project dependencies
 RUN npm install
+
+# Copy the project files to the working directory
+COPY . .
 
 # Build the Next.js app
 RUN npm run build
