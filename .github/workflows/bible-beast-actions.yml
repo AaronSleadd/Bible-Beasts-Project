@@ -1,6 +1,7 @@
 name: bible-beast-actions
 run-name: ${{ github.actor}} is taking action!
-on: 
+on:
+  push:
   workflow_dispatch:
 jobs: 
     build-a-beast:
