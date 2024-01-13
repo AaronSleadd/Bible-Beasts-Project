@@ -1,0 +1,13 @@
+name: bible-beast-actions
+run-name: ${{ github.actor}} is taking action!
+on: [push]
+jobs: 
+    build-a-beast:
+      runs-on: ubuntu-latest
+      steps:
+        - uses: actions/checkout@v3
+        - name: Build and push the image
+          run: 
+            docker login --username aaronsleadd --password ${{ secrets.GH_PAT }} ghcr.io
+            docker build . --tag ghcr.io/aaronsleadd/bible-beasts-container:latest
+            docker push ghcr.io/aaronsleadd/bible-beasts-container:latest
