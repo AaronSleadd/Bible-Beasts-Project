@@ -7,7 +7,7 @@ jobs:
       steps:
         - uses: actions/checkout@v3
         - name: Build and push the image
-          run: 
+          run: |
             docker login --username aaronsleadd --password ${{ secrets.GH_PAT }} ghcr.io
             docker build . --tag ghcr.io/aaronsleadd/bible-beasts-container:latest
             docker push ghcr.io/aaronsleadd/bible-beasts-container:latest
