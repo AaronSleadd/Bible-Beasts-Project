@@ -1,5 +1,5 @@
 # Start from the official Node.js LTS base image
-FROM node:alpine
+FROM node:20-alpine
 
 # Add the time to the build
 RUN date -u +"%Y-%m-%dT%H:%M:%SZ" > /build-time.txt
